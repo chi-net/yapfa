@@ -14,6 +14,8 @@
 
 添加在你 k8s 的 statefulset 里面，然后读读API文档，拉下来这个库，dial就好了(WIP...)
 
+容器镜像地址：`ghcr.io/chi-net/yapfa`
+
 ## 开源协议
 
 使用MIT协议开源，你爱咋用咋用，别来烦我。
