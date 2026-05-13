@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package yapfa.v1;
+
+option go_package = "github.com/chi-net/yapfa/gen/yapfa/v1;yapfa_v1";
+
+// ── Delete ───────────────────────────────────────────
+
+message DeleteRequest {
+  string path      = 1;
+  bool   recursive = 2; // true = rm -rf，false 删目录会报错
+}
+
+message DeleteResponse {
+  bool success = 1;
+}
+
+// ── Move ─────────────────────────────────────────────
+
+message MoveRequest {
+  string from        = 1;
+  string to          = 2;
+  bool   overwrite   = 3; // 目标已存在时是否覆盖
+}
+
+message MoveResponse {
+  bool success = 1;
+}
+
+// ── Copy ─────────────────────────────────────────────
+
+message CopyRequest {
+  string from      = 1;
+  string to        = 2;
+  bool   recursive = 3; // 复制目录时需要
+  bool   overwrite = 4;
+}
+
+message CopyResponse {
+  bool success = 1;
+}
+
+// ── Mkdir ─────────────────────────────────────────────
+
+message MkdirRequest {
+  string path    = 1;
+  bool   parents = 2; // true = mkdir -p，自动创建父目录
+}
+
+message MkdirResponse {
+  bool success = 1;
+}

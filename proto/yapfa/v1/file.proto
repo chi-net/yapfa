@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package yapfa.v1;
+
+option go_package = "github.com/chi-net/yapfa/gen/yapfa/v1;yapfa_v1";
+
+message FileInfo {
+  string name        = 1;
+  string path        = 2;
+  int64  size        = 3;
+  bool   is_dir      = 4;
+  string permissions = 5;
+  int64  modified_at = 6;
+}

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package yapfa.v1;
+
+option go_package = "github.com/chi-net/yapfa/gen/yapfa/v1;yapfa_v1";
+
+message DownloadRequest {
+  string path       = 1;
+  int64  offset     = 2; // 断点续传，从第几字节开始，0 表示从头
+  int64  chunk_size = 3; // 每块大小，0 用默认值（比如 32KB）
+}
+
+message DownloadResponse {
+  oneof payload {
+    DownloadMeta meta = 1; // 第一个消息，文件元数据
+    bytes        data = 2; // 后续消息，数据块
+  }
+}
+
+message DownloadMeta {
+  string name       = 1; // 文件名
+  int64  size       = 2; // 文件总大小，用于进度计算
+  string mime_type  = 3; // 如 "application/octet-stream"
+}
+
+message UploadRequest {
+  oneof payload {
+    UploadMeta meta = 1; // 第一个消息
+    bytes      data = 2; // 后续消息
+  }
+}
+
+message UploadMeta {
+  string path      = 1; // 目标路径
+  int64  size      = 2; // 文件总大小，可选
+  bool   overwrite = 3; // 是否覆盖
+}
+
+message UploadResponse {
+  int64 bytes_written = 1;
+}

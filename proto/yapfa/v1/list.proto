@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package yapfa.v1;
+
+option go_package = "github.com/chi-net/yapfa/gen/yapfa/v1;yapfa_v1";
+
+import "yapfa/v1/file.proto";
+
+message ListRequest {
+  string path = 1;
+}
+
+message ListResponse {
+  repeated FileInfo files = 1;
+}

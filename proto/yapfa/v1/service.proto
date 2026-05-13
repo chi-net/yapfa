@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package yapfa.v1;
+
+option go_package = "github.com/chi-net/yapfa/gen/yapfa/v1;yapfa_v1";
+
+import "yapfa/v1/list.proto";
+import "yapfa/v1/file.proto";
+import "yapfa/v1/op.proto";
+import "yapfa/v1/updown.proto";
+import "yapfa/v1/stat.proto";
+
+service YAPFA {
+  rpc List(ListRequest)                        returns (ListResponse);
+  rpc Stat(StatRequest)                        returns (FileInfo);
+  rpc Download(DownloadRequest)                returns (stream DownloadResponse);
+  rpc Upload(stream UploadResponse)               returns (UploadResponse);
+  rpc Delete(DeleteRequest)                    returns (DeleteResponse);
+  rpc Move(MoveRequest)                        returns (MoveResponse);
+  rpc Copy(CopyRequest)                        returns (CopyResponse);
+}
