@@ -1,4 +1,4 @@
-FROM go:alpine as dist
+FROM golang:alpine as dist
 COPY . /build
 WORKDIR /build
 RUN "cd /build && go build -s -w -trimpath -o ./build/yapfa ./cmd/main.go"
