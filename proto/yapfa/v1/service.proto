@@ -12,10 +12,11 @@ import "yapfa/v1/stat.proto";
 
 service YAPFA {
   rpc List(ListRequest)                        returns (ListResponse);
-  rpc Stat(StatRequest)                        returns (FileInfo);
+  rpc Stat(StatRequest)                        returns (StatResponse);
   rpc Download(DownloadRequest)                returns (stream DownloadResponse);
-  rpc Upload(stream UploadResponse)               returns (UploadResponse);
+  rpc Upload(stream UploadRequest)             returns (UploadResponse);
   rpc Delete(DeleteRequest)                    returns (DeleteResponse);
   rpc Move(MoveRequest)                        returns (MoveResponse);
   rpc Copy(CopyRequest)                        returns (CopyResponse);
+  rpc Mkdir(MkdirRequest)                      returns (MkdirResponse);
 }

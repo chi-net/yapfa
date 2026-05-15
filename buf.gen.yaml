@@ -1,4 +1,4 @@
-version: v2
+version: v1
 plugins:
   - plugin: buf.build/protocolbuffers/go
     out: gen
