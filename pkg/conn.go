@@ -15,3 +15,9 @@ func Connect(host string) *Conn {
 	cli := yapfa_v1connect.NewYAPFAClient(http.DefaultClient, host)
 	return &Conn{cli: cli}
 }
+
+// ConnectWithHttpClient 带http client内置的连接
+func ConnectWithHttpClient(host string, client *http.Client) *Conn {
+	cli := yapfa_v1connect.NewYAPFAClient(client, host)
+	return &Conn{cli: cli}
+}
